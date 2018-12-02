@@ -1,32 +1,27 @@
-.App {
-  text-align: center;
+.header {
+  margin: 10px;
+  color: salmon;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.new-item {
+  margin: 5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.items {
+  margin-right: 5px;
+  padding: 5px
 }
 
-.App-link {
-  color: #61dafb;
+.list-group-item {
+  margin-bottom: 2px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input[type=checkbox]:checked + label.strikethrough{
+  text-decoration: line-through;
+  color: grey;
+}
+
+.complete label {
+  text-decoration: line-through;
+  color: grey;
 }

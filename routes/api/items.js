@@ -29,5 +29,13 @@ router.delete('/:id', (req, res) => {
     .catch(err => res.status(404).json({ success: false }));
 });
 
+router.put('/:id', (req,res) => {
+  const id = req.body;
+  Item.findByIdAndUpdate(id, { completed: !completed}, {new:true}, (err, item) => {
+    if (err) return res.status(500).send(err);
+    return res.status(200).json({success: true});
+  })    
+})
+
 
 module.exports = router;
