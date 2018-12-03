@@ -16,7 +16,6 @@ input[type=checkbox]:checked + label.strikethrough{
   color: grey;
 }
 
-/* why is this not working */
 .complete + label.strikethrough {
   text-decoration: line-through;
   color: grey;
@@ -24,9 +23,4 @@ input[type=checkbox]:checked + label.strikethrough{
 
 #root > div > div > div > ul > div > div > li > label {
   margin: 10px;
-}
-
-input.complete {
-  text-decoration: line-through;
-  color: grey;
 }

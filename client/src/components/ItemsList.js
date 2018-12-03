@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Container, ListGroup, ListGroupItem, Navbar, NavbarBrand, Input, Form, FormGroup, Button } from 'reactstrap';
+import NavBar from './NavBar';
+import { Container, ListGroup, ListGroupItem, Input, Form, FormGroup, Button } from 'reactstrap';
 
 class ItemsList extends Component {
   constructor(props) {
@@ -21,27 +22,21 @@ class ItemsList extends Component {
           items: response.data
         })
       })
-
   }
 
   handleValidation = () => {
     let inputText = this.state.name;
     let errors = {};
     let formIsValid = true;
-
     //Name
     if (!inputText) {
       formIsValid = false;
       errors["name"] = "Cannot be empty";
     }
-
-    if (typeof inputText !== "undefined" || inputText !== null) {
-      if (!inputText.match(/^\w+( \w+)*$/)) {
-        formIsValid = false;
-        errors["name"] = "Only letters";
-      }
+    if (typeof inputText === "undefined" || inputText === null || !inputText.match(/^\w+( \w+)*$/)) {
+      formIsValid = false;
+      errors["name"] = "Only letters";
     }
-
     this.setState({ errors: errors });
     return formIsValid;
   }
@@ -55,7 +50,7 @@ class ItemsList extends Component {
       return
     }
     const newItem = {
-      name: this.state.name.trim()
+      name: this.state.name
     }
     axios.post('/api/items', newItem)
       .then(res => {
@@ -89,10 +84,15 @@ class ItemsList extends Component {
   updateItem = (id, item) => {
     console.log(item);
     let data = item;  
-    axios.put(`http://localhost:5000/api/items/${id}`, data)
+    axios.post(`http://localhost:5000/api/items/${id}`, data)
       .then(res => {
         this.allItems();
-        document.getElementsByClassName("complete").checked = true;        
+        let completedItem = document.getElementsByClassName("complete");
+        if(completedItem.checked) {
+          completedItem.checked = false
+        } else {
+          completedItem.checked = true
+        }   
       })
   }
 
@@ -105,11 +105,7 @@ class ItemsList extends Component {
     } else {
       return (
         <Container>
-          <Navbar color="dark" className="header">
-            <Container>
-              <NavbarBrand>Todo List ({items.length})</NavbarBrand>
-            </Container>
-          </Navbar>
+          <NavBar items={items}/>       
           <ListGroup>
             <Container>
               <Form onSubmit={this.onSubmit}>

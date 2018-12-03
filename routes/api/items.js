@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+
 // Handling CORS
 const cors = require('cors');
 
@@ -9,7 +10,7 @@ const Item = require('../../models/Item');
 // @route GET api/items
 // @desc Get all items
 router.get('/', cors(), (req, res) => {
-  Item.find().sort({date: -1})
+  Item.find().sort({date: -1}) //Prepends new Items on top
     .then(items => res.json(items))
 });
 
@@ -31,10 +32,11 @@ router.delete('/:id', cors(), (req, res) => {
     .catch(err => res.json({ success: false }));
 });
 
-// @route Put api/items/:id
+// @route Post api/items/:id
 // @desc Update an item
-router.put('/:id', cors(), (req,res) => {
-  console.log(req.body);
+// CORS preflight response is not supported in PUT Method
+// So have to use POST Method to update item
+router.post('/:id', cors(), (req,res) => {
   Item.findById(req.params.id)
     .then(item => {
       item.name = req.body.name;
