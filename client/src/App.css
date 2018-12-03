@@ -7,11 +7,6 @@
   margin: 5px;
 }
 
-.items {
-  margin-right: 5px;
-  padding: 5px
-}
-
 .list-group-item {
   margin-bottom: 2px;
 }
@@ -21,7 +16,17 @@ input[type=checkbox]:checked + label.strikethrough{
   color: grey;
 }
 
-.complete label {
+/* why is this not working */
+.complete + label.strikethrough {
+  text-decoration: line-through;
+  color: grey;
+}
+
+#root > div > div > div > ul > div > div > li > label {
+  margin: 10px;
+}
+
+input.complete {
   text-decoration: line-through;
   color: grey;
 }
