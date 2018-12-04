@@ -42,7 +42,7 @@ router.post('/:id', cors(), (req,res) => {
       item.name = req.body.name;
       item.completed = req.body.completed;
       item.save()
-    })
+    }).then(item => res.json(item))
     .catch(err => console.log(err));
 });
 

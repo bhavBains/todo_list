@@ -21,7 +21,7 @@ class ItemsList extends Component {
           isLoading: true,
           items: response.data
         })
-      })
+      })    
   }
 
   handleValidation = () => {
@@ -56,7 +56,7 @@ class ItemsList extends Component {
       .then(res => {
         document.getElementById("item").value = "";
         this.setState(state => ({
-          items: [{ name: res.data.name }, ...state.items],
+          items: [res.data, ...state.items], // name: res.data.name 
         }))
       })
   }
@@ -77,22 +77,20 @@ class ItemsList extends Component {
       this.setState({
         isLoading: true,
         items: response.data
-      })
+      }) 
+      let completedItems = document.getElementsByClassName("complete");    
+      for (let i = 0; i < completedItems.length; i++) {
+        completedItems[i].checked = true;
+      }     
     })
+    
   }
 
   updateItem = (id, item) => {
     console.log(item);
-    let data = item;  
-    axios.post(`http://localhost:5000/api/items/${id}`, data)
+    axios.post(`http://localhost:5000/api/items/${id}`, item)
       .then(res => {
-        this.allItems();
-        let completedItem = document.getElementsByClassName("complete");
-        if(completedItem.checked) {
-          completedItem.checked = false
-        } else {
-          completedItem.checked = true
-        }   
+        this.allItems();        
       })
   }
 

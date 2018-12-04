@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import { Container, Navbar, NavbarBrand, Nav, NavItem, Input } from 'reactstrap';
 
 class NavBar extends Component {
+ 
   hideItems = (e) => {
-    // e.preventDefault();
-    // document.getElementsByClassName("complete").parentElement.style.display="none";
+    const elements = document.getElementsByClassName("complete");   
+    if(e.target.checked) {
+      for (let i = 0; i < elements.length; i++) {
+        elements[i].parentElement.style.display = "none";
+      } 
+    }    
   }
 
   render() {
@@ -14,7 +19,7 @@ class NavBar extends Component {
           <NavbarBrand>Todo List ({this.props.items.length})</NavbarBrand>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <Input type="checkbox" onClick={this.hideItems} /><label for="checkbox">Hide completed tasks</label>
+              <Input type="checkbox" onClick={this.hideItems} /><label htmlFor="checkbox">Hide completed tasks</label>
             </NavItem>
           </Nav>
         </Container>

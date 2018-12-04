@@ -6,8 +6,10 @@ A basic Todo app with react and node.
 
 1. Install server dependencies using the `npm install` command.
 2. Go to Client folder and run `npm install` or `npm i`
-2. Start the app using `npm start` command. The app will be served at <http://localhost:3000/> with both servers running.
-3. Go to <http://localhost:3000/> in the browser.
+3. Start the app using `npm start` command. The app will be served at <http://localhost:3000/> with both servers running.
+4. Go to <http://localhost:3000/> in the browser.
+5. Run tests with `npm test`
+6. Tests coverage can be found with `npm run test:coverage`
 
 !["Demo"](https://github.com/bhavBains/todo_list/blob/master/media/teradici-todo.gif?raw=true)
 !["Demo"](https://github.com/bhavBains/todo_list/blob/master/media/To%20Do%20React%20App.png?raw=true)
