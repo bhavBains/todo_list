@@ -5,11 +5,13 @@ class NavBar extends Component {
  
   hideItems = (e) => {
     const elements = document.getElementsByClassName("complete");   
-    if(e.target.checked) {
-      for (let i = 0; i < elements.length; i++) {
+    for (let i = 0; i < elements.length; i++) {
+      if(e.target.checked) {
         elements[i].parentElement.style.display = "none";
-      } 
-    }    
+      } else {
+        elements[i].parentElement.style.display = "block";        
+      }
+    }         
   }
 
   render() {
