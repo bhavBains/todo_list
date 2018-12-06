@@ -9,7 +9,7 @@ class NavBar extends Component {
       if(e.target.checked) {
         elements[i].parentElement.style.display = "none";
       } else {
-        elements[i].parentElement.style.display = "block";        
+        elements[i].parentElement.style.cssText = "display:block; transition:2s;";        
       }
     }         
   }
