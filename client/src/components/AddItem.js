@@ -20,7 +20,7 @@ class AddItem extends Component {
     let inputText = this.state.name;
     let errors = {};
     let formIsValid = true;
-    //Name
+    
     if (!inputText) {
       formIsValid = false;
       errors["name"] = "Cannot be empty";
@@ -55,16 +55,15 @@ class AddItem extends Component {
   }
 
   render () {
-    // const name = this.state.item;
     return (
       <Form onSubmit={this.onSubmit}>
       <FormGroup>
         <Input required
           type="text"
-          // name="name"
+          name="name"
           id="item"
           placeholder="What's next on your mind..."
-          onChange={(e) => this.setState({ name: e.target.value })}  //{ name: e.target.value }
+          onChange={(e) => this.setState({ name: e.target.value })}
         />
       </FormGroup>
     </Form>

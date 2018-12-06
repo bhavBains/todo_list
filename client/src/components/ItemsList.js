@@ -14,7 +14,7 @@ class ItemsList extends Component {
       name: ""
     };
   }
-
+  // AJAX call to display all items
   allItems = () => {
     axios.get('/api/items')
     .then(response => {
@@ -29,11 +29,13 @@ class ItemsList extends Component {
     })
     
   }
-  // AJAX call to display all items
+  
   componentDidMount() {
     this.allItems();    
   }
 
+  //Adding new item
+  //Takes the input from AddItem Component
   addItem = (input) => {
     this.setState(state => ({
       items: [input, ...state.items],
